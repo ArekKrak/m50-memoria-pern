@@ -77,15 +77,21 @@ Pages:
 | users | categories | notes |
 |-------|------------|-------|
 | id | id | id |
-| email | name | title |
-| password_hash | user_id | content |
-|  |  | user_id |
-|  |  | category_id |
+| email (unique) | name | title |
+| password_hash (nullable) | user_id | content |
+| google_id (nullable, unique) |  | user_id |
+| display_name (nullable) |  | category_id (nullable) |
 |  |  | created_at |
 |  |  | updated_at |
 
 ---
 ## API Endpoints (MVP)
+
+**Google Auth:**
+```
+GET /auth/google
+GET /auth/google/callback
+```
 
 **Authentication:**
 ```
