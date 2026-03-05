@@ -3,7 +3,7 @@
   margin: 0 auto;
   width: 17rem;
   padding: 0;
-  transition: text-shadow 0.8s ease;
+  transition: text-shadow 1.5s ease;
   font-size: 5rem;
 }
 .brand:hover {
