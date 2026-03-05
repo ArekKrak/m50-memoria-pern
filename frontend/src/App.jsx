@@ -1,4 +1,4 @@
-import memoriaLogo from '/memoria_banner.svg'
+import memoriaLogo from '/banner.svg'
 import './App.css'
 import Navbar from './components/Navbar'
 import Login from './pages/Login'
