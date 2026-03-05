@@ -10,7 +10,7 @@ export default function Navbar({ bannerSrc }) {
       </h2>
       <nav className='nav'>
         <Link to="/login">Sign in</Link>
-        <Link tp="/register">Sign up</Link>
+        <Link to="/register">Sign up</Link>
       </nav>
     </header>
   );
