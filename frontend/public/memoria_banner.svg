@@ -1,0 +1,33 @@
+<svg width="1000" height="280" viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- background -->
+  <rect x="0" y="0" width="1000" height="280" fill="#000000"/>
+  <!-- <rect width="900" height="280" fill="#000000"/> -->
+  <style>
+    .line { stroke: #1A2FFF; stroke-width: 15; stroke-linecap: round; fill: none; }
+    .node { fill: #1A2FFF; }
+    .word { fill: #1A2FFF; font-family: "Lobster", cursive; font-size: 120px; }
+    .tag  { fill: #1A2FFF; opacity: 0.8; font-family: "Cantarell", -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size: 24px; letter-spacing: 1px; }
+  </style>
+
+  <!-- icon -->
+  <g transform="translate(70,35)">
+    <line class="line" x1="70"  y1="160" x2="70"  y2="90"/>
+    <line class="line" x1="70"  y1="90"  x2="140" y2="70"/>
+    <line class="line" x1="140" y1="70"  x2="140" y2="160"/>
+    <line class="line" x1="140" y1="90"  x2="210" y2="70"/>
+    <line class="line" x1="210" y1="70"  x2="210" y2="160"/>
+
+    <circle class="node" cx="70"  cy="160" r="14"/>
+    <circle class="node" cx="70"  cy="90"  r="14"/>
+
+    <circle class="node" cx="140" cy="70"  r="14"/>
+    <circle class="node" cx="140" cy="90"  r="14"/>
+    <circle class="node" cx="140" cy="160" r="14"/>
+
+    <circle class="node" cx="210" cy="70"  r="14"/>
+    <circle class="node" cx="210" cy="160" r="14"/>
+  </g>
+
+  <text class="word" x="410" y="155">memoria</text>
+  <text class="tag" x="450" y="205">Your personal knowledge base</text>
+</svg>
