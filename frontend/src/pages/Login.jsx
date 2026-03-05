@@ -1,28 +1,33 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   // Handler to intercept the form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    const res = await fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "include", // Allows the browser to store the session cookie the backend sends. Without it, authentication fails
-      body: JSON.stringify({ email, password })
-    });
+    try {
+      const res = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include", // Allows the browser to store the session cookie the backend sends. Without it, authentication fails
+        body: JSON.stringify({ email, password })
+      });
 
-    if (res.ok) {
-      navigate("/dashboard"); // Here's the moment the application crosses a threshold.
-    } else {
-      console.error("Login failed");
+      if (res.ok) {
+        navigate("/dashboard"); // Here's the moment the application crosses a threshold.
+      } else {
+        console.error("Login failed");
+      }
+    } catch (err) {
+      console.error("Network error", err);
     }
   };
 
