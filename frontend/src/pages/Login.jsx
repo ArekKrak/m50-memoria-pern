@@ -5,6 +5,7 @@ import './Login.css';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   // Handler to intercept the form submit
@@ -24,7 +25,8 @@ export default function Login() {
       if (res.ok) {
         navigate("/dashboard"); // Here's the moment the application crosses a threshold.
       } else {
-        console.error("Login failed");
+        setError("Invalid email or password");
+        setPassword("");
       }
     } catch (err) {
       console.error("Network error", err);
@@ -52,7 +54,9 @@ export default function Login() {
           required
         />
         <button type="submit">Sign in</button>
+
       </form>
+      {error && <p className="error">{error}</p>}
       
       <button className='google'>Sign in with Google</button>
     </div>
