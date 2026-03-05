@@ -1,0 +1,15 @@
+.brand {
+  font-family: "Lobster", cursive;
+  margin: 0 auto;
+  width: 17rem;
+  padding: 0;
+  transition: text-shadow 0.8s ease;
+  font-size: 5rem;
+}
+.brand:hover {
+  text-shadow: 
+    0 0 10px #1a2fff,
+    0 0 15px #1a2fff,
+    0 0 25px #1a2fff,
+    0 0 45px #1a2fff;
+}

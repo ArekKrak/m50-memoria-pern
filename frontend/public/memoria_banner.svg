@@ -5,7 +5,7 @@
   <style>
     .line { stroke: #1A2FFF; stroke-width: 15; stroke-linecap: round; fill: none; }
     .node { fill: #1A2FFF; }
-    .word { fill: #1A2FFF; font-family: "Lobster", cursive; font-size: 120px; }
+    .word { fill: #1A2FFF; font-family: "Lobster", cursive; font-size: 80px; }
     .tag  { fill: #1A2FFF; opacity: 0.8; font-family: "Cantarell", -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-size: 24px; letter-spacing: 1px; }
   </style>
 
@@ -29,5 +29,5 @@
   </g>
 
   <text class="word" x="410" y="155">memoria</text>
-  <text class="tag" x="450" y="205">Your personal knowledge base</text>
+  <text class="tag" x="400" y="205">Your personal knowledge base</text>
 </svg>
