@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import memoriaLogo from '../public//memoria_logo.svg'
+import memoriaLogo from '/memoria_logo.svg'
 import './App.css'
 
 function App() {
