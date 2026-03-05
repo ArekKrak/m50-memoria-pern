@@ -1,3 +1,5 @@
+import './Login.css';
+
 export default function Login() {
   return (
     <div>
@@ -7,7 +9,7 @@ export default function Login() {
         <input type="password" placeholder="Your Password" required />
         <button type="submit">Sign in</button>
       </form>
-      <button>Sign in with Google</button>
+      <button className='google'>Sign in with Google</button>
     </div>
   );
 }
