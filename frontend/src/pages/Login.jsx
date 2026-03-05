@@ -6,12 +6,18 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Handler to intercept the form submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+  };
+
   return (
     <div>
       <h1>Sign in</h1>
       <p><Link to="/register" className='signUp'>Sign up</Link> if you don't have an account yet.</p>
       
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Your Email"
