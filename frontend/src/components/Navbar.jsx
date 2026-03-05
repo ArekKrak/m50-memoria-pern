@@ -8,10 +8,6 @@ export default function Navbar({ bannerSrc }) {
       <h2 className="brand">
         <Link to="/" className='brandLink'>memoria</Link>
       </h2>
-      <nav className='nav'>
-        <Link to="/login">Sign in</Link>
-        <Link to="/register">Sign up</Link>
-      </nav>
     </header>
   );
 }
