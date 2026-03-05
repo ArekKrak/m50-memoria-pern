@@ -3,6 +3,7 @@
   margin: 0 auto;
   width: 17rem;
   padding: 0;
+  text-shadow: 0 0 8px #ffffff;
   transition: text-shadow 1.5s ease;
   font-size: 5rem;
 }
