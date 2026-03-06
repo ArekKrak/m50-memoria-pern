@@ -26,17 +26,27 @@ router.post("/login", async (req, res) => {
 
   try {
     const result = await pool.query(
-      `SELECT id, email
+      `SELECT id, email, password_hash
        FROM users
-       WHERE email = $1
-       AND password_hash = $2`,
-      [email, password]
+       WHERE email = $1`,
+      [email]
     );
     if (!result.rows.length) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
+
+    const user = result.rows[0];
+
+    if (user.password_hash !== password) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    req.session.userId = user.id;
     
-    res.json(result.rows[0]);
+    res.json({
+      id: user.id,
+      email: user.email
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Login failed" });

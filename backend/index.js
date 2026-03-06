@@ -1,5 +1,6 @@
 const pool = require("./src/db");
 const express = require("express");
+const sessionMiddleware = require("./src/session");
 const notesRoutes = require("./src/routes/notes.routes");
 const categoriesRoutes = require("./src/routes/categories.routes");
 const authRoutes = require("./src/routes/auth.routes");
@@ -9,6 +10,7 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(sessionMiddleware);
 app.use("/notes", notesRoutes);
 app.use("/categories", categoriesRoutes);
 app.use("/", authRoutes);
