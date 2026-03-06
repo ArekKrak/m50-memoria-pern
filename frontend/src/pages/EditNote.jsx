@@ -1,18 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function EditNote() {
+export default function EditNote({ user }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const { id } = useParams(); // Extracts the `:id` from the route `/notes/:id/edit` That's the identifier that tells the editor which note is being modified
   const navigate = useNavigate();
 
-  // Placeholder data
-  const [title, setTitle] = useState("Sample note title");
-  const [content, setContent] = useState("Sample note content...");
+  useEffect(() => {
+    fetch(`http://localhost:3000/notes/${id}`, {
+      credentials: "include"
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setTitle(data.title);
+        setContent(data.content);
+      });
+  }, [id]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log({ id, title, content });
+
+    await fetch(`http://localhost:3000/notes/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        title,
+        content
+      })
+    });
+
     navigate("/dashboard");
   }
 
