@@ -58,7 +58,7 @@ export default function Login() {
       </form>
       {error && <p className="error">{error}</p>}
       
-      <button className='google'>Sign in with Google</button>
+      <button className='google' type="button" disabled>Sign in with Google</button>
     </div>
   );
 }
