@@ -10,9 +10,8 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/dashboard");
 
-    /* try {
+    try {
       const res = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
@@ -23,14 +22,15 @@ export default function Register() {
       });
 
       if (res.ok) {
-        navigate("/dashboard");
+        navigate("/login");
       } else {
         setError("Registration failed.");
         setPassword("");
       }
     } catch (err) {
       console.error("Network error", err);
-    } */
+      setError("Registration failed.");
+    }
   };
 
   return (
