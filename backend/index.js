@@ -1,6 +1,7 @@
 const pool = require("./src/db");
 const express = require("express");
 const sessionMiddleware = require("./src/session");
+require("dotenv").config();
 const notesRoutes = require("./src/routes/notes.routes");
 const categoriesRoutes = require("./src/routes/categories.routes");
 const authRoutes = require("./src/routes/auth.routes");
