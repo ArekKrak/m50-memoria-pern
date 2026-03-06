@@ -59,7 +59,13 @@ export default function Login() {
       </form>
       {error && <p className="error">{error}</p>}
       
-      <button className='google' type="button" disabled>Sign in with Google</button>
+      <button 
+        className='google'
+        type="button"
+        onClick={() => window.location.href = "http://localhost:3000/auth/google"}
+      >
+        Sign in with Google
+      </button>
     </div>
   );
 }
