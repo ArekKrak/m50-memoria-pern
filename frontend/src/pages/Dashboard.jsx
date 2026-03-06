@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   // Placeholder notes
@@ -21,7 +22,7 @@ export default function Dashboard() {
           <li key={note.id}>
             <strong>{note.title}</strong> ({note.category})
             {" "}
-            <Link to={`/notes/${note.id}/edit`}>Edit</Link>
+            <Link to={`/notes/${note.id}/edit`} className="edit">Edit</Link>
           </li>
         ))}
       </ul>
