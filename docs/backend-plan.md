@@ -27,6 +27,6 @@
 |  |  | updated_at |
 
 **Foreign keys:**
-`categories.user_id` → `users.id`
-`notes.user_id` → `users.id`
-`notes.category_id` → `categories.id`
+- `categories.user_id` → `users.id`
+- `notes.user_id` → `users.id`
+- `notes.category_id` → `categories.id`
