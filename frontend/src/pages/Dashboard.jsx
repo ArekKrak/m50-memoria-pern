@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
-export default function Dashboard({ user }) {
+export default function Dashboard({ user, refreshUser }) {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
+    refreshUser();
+
     fetch("http://localhost:3000/notes", {
       credentials: "include"
     })
