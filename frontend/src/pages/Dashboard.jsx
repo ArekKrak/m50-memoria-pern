@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
 export default function Dashboard() {

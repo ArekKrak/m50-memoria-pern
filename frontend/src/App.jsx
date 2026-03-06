@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, data } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
