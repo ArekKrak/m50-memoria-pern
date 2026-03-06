@@ -62,4 +62,4 @@ GET /auth/google
 GET /auth/google/callback
 ```
 
-*"That's the contract between your frontend and backend."*
+> *"That's the contract between your frontend and backend."*
