@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Navbar bannerSrc={memoriaLogo} />
+      <Navbar bannerSrc={memoriaLogo} user={user} refreshUser={refreshUser} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login refreshUser={refreshUser} />} />
