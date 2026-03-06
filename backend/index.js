@@ -17,7 +17,7 @@ pool.query("SELECT NOW()")
 
 app.get("/notes", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM notes ORDER BY created_at DESC");
+    const result = await pool.query("SELECT id, title, content, user_id, category_id, created_at, updated_at FROM notes ORDER BY created_at DESC");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
