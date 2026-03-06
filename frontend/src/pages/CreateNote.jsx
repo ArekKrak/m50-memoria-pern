@@ -6,11 +6,21 @@ export default function CreateNote() {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Placeholder behaviour
-    console.log({ title, content });
+    await fetch("http://localhost:3000/notes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        title,
+        content,
+        user_id: 1
+      })
+    });
     navigate("/dashboard");
   };
 
