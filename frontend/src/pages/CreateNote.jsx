@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function CreateNote() {
+export default function CreateNote({ user }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    if (!user) return;
+
     e.preventDefault();
 
     await fetch("http://localhost:3000/notes", {
@@ -18,7 +20,7 @@ export default function CreateNote() {
       body: JSON.stringify({
         title,
         content,
-        user_id: 1
+        user_id: user.id
       })
     });
     navigate("/dashboard");
