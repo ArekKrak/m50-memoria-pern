@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
-export default function Dashboard() {
+export default function Dashboard({ user }) {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Dashboard() {
       <ul>
         {notes.map((note) => (
           <li key={note.id}>
-            <strong>{note.title}</strong> ({note.category})
+            <strong>{note.title}</strong>
             {" "}
             <Link to={`/notes/${note.id}/edit`} className="edit">Edit</Link>
           </li>
