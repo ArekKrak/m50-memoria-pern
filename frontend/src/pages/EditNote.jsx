@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function EditNote({ user }) {
+export default function EditNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { id } = useParams(); // Extracts the `:id` from the route `/notes/:id/edit` That's the identifier that tells the editor which note is being modified

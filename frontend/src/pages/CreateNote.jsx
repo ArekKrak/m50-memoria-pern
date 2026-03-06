@@ -7,9 +7,8 @@ export default function CreateNote({ user }) {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    if (!user) return;
-
     e.preventDefault();
+    if (!user) return;
 
     await fetch("http://localhost:3000/notes", {
       method: "POST",
