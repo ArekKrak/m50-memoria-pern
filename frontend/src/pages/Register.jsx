@@ -37,7 +37,7 @@ export default function Register() {
       <h1>Sign up</h1>
       <p>Already signed up? <Link to="/login" className="signIn"> Sign in here</Link></p>
 
-      <form onSubmit={{handleSubmit}}>
+      <form onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Your Email"
