@@ -54,11 +54,29 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  res.json({ message: "Logged out" });
+  req.session.destroy(() => {
+    res.json({ message: "Logged out" });
+  });
 });
 
-router.get("/me", (req, res) => {
-  res.json({ message: "User session placeholder" });
+router.get("/me", async (req, res) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ error: "Not authenticated" });
+  }
+
+  try {
+    const result = await pool.query(
+      `SELECT id, email
+       FROM users
+       WHERE id = $1`,
+      [req.session.userId]
+    );
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
 module.exports = router;
