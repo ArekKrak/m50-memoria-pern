@@ -54,12 +54,18 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  req.session.destroy(() => {
-    res.json({ message: "Logged out" });
+  req.logout?.(() => {
+    req.session.destroy(() => {
+      res.json({ message: "Logged out" });
+    });
   });
 });
 
 router.get("/me", async (req, res) => {
+  if (req.user) {
+    return res.json(req.user);
+  }
+  
   if (!req.session.userId) {
     return res.status(401).json({ error: "Not authenticated" });
   }
