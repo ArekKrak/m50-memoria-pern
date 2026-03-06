@@ -13,7 +13,7 @@ import memoriaLogo from '/banner.svg';
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
+  const refreshUser = () => {
     fetch("http://localhost:3000/me", {
       credentials: "include" // Tells the browser to send the session cookie to the backend.
     })
@@ -23,6 +23,10 @@ function App() {
       })
       .then(data => setUser(data))
       .catch(() => setUser(null));
+  };
+
+  useEffect(() => {
+    refreshUser();
   }, []);
 
   return (
@@ -30,9 +34,9 @@ function App() {
       <Navbar bannerSrc={memoriaLogo} />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login refreshUser={refreshUser} />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/dashboard' element={<Dashboard user={user} />} />
+        <Route path='/dashboard' element={<Dashboard user={user} refreshUser={refreshUser} />} />
         <Route path='/notes/new' element={<CreateNote user={user} />} />
         <Route path='/notes/:id/edit' element={<EditNote />} />
         <Route path='*' element={<Navigate to="/" replace />} />
