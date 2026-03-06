@@ -55,7 +55,7 @@ app.post("/register", async (req, res) => {
 
   try {
     const result = await pool.query(
-      `INSERT INTO categories (email, password_hash)
+      `INSERT INTO users (email, password_hash)
        VALUES ($1, $2)
        RETURNING id, email`,
       [email, password]
