@@ -1,0 +1,31 @@
+.signIn {
+  text-decoration: none;
+  color: #1a2fff;
+  text-shadow: 0 0 6px #1a2fff;
+  transition: color 1.5s ease, text-shadow 1.5s ease;
+}
+
+.signIn:hover {
+  color: #ffffff;
+  text-shadow: 
+    0 0 10px #ffffff,
+    0 0 15px #ffffff,
+    0 0 25px #ffffff,
+    0 0 45px #ffffff,
+    0 0 65px #ffffff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+form input {
+  width: 220px;
+}
+
+form button {
+  margin-top: 0.3rem;
+}
