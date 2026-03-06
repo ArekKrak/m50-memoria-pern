@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
-    <div>
+    <div className='welcomeText'>
       <h1>Welcome to memoria.</h1>
       <nav className='nav'>
         <Link to="/login">Sign in</Link>
