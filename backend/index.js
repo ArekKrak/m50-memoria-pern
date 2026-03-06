@@ -25,6 +25,23 @@ app.get("/notes", async (req, res) => {
   }
 });
 
+app.post("/notes", async (req, res) => {
+  const { title, content, user_id, category_id } = req.body;
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO notes (title, content, user_id, category_id)
+       VALUES ($1, $2, $3, $4)
+       RETURNING *`,
+      [title, content, user_id, category_id]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
