@@ -15,6 +15,16 @@ pool.query("SELECT NOW()")
   .then((res) => console.log("Database connected:", res.rows[0]))
   .catch((err) => console.error("Database connection error:", err));
 
+app.get("/notes", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM notes ORDER BY created_at DESC");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
