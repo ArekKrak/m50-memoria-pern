@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { data, Link } from "react-router-dom";
 import "./Dashboard.css";
 
 export default function Dashboard() {
-  // Placeholder notes
-  const notes = [
-    { id: 1, title: "First note", category: "General" },
-    { id: 2, title: "React thoughts", category: "Programming" },
-    { id: 3, title: "Travels to go", category: "Travelling" }
-  ];
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/notes", {
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(data => setNotes(data));
+  }, []);
 
   return (
     <div>
