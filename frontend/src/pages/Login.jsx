@@ -11,9 +11,8 @@ export default function Login() {
   // Handler to intercept the form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/dashboard");
     
-    /* try {
+    try {
       const res = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
@@ -31,7 +30,8 @@ export default function Login() {
       }
     } catch (err) {
       console.error("Network error", err);
-    } */
+      setError("Login failed");
+    }
   };
 
   return (
