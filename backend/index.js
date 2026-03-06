@@ -1,6 +1,7 @@
 const pool = require("./src/db");
 const express = require("express");
 const notesRoutes = require("./src/routes/notes.routes");
+const categoriesRoutes = require("./src/routes/categories.routes");
 
 const app = express();
 const PORT = 3000;
@@ -8,6 +9,7 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/notes", notesRoutes);
+app.use("/categories", categoriesRoutes);
 
 app.get("/", (req, res) => {
   res.send("Memoria API running");
@@ -16,39 +18,6 @@ app.get("/", (req, res) => {
 pool.query("SELECT NOW()")
   .then((res) => console.log("Database connected:", res.rows[0]))
   .catch((err) => console.error("Database connection error:", err));
-
-app.get("/categories", async (req, res) => {
-  try {
-    const result = await pool.query(
-      `SELECT id, name, user_id
-       FROM categories
-       ORDER BY name`
-    );
-    
-    res.json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Database error" });
-  }
-});
-
-app.post("/categories", async (req, res) => {
-  const { name, user_id } = req.body;
-
-  try {
-    const result = await pool.query(
-      `INSERT INTO categories (name, user_id)
-       VALUES ($1, $2)
-       RETURNING *`,
-      [name, user_id]
-    );
-    
-    res.status(201).json(result.rows[0]);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Database error" });
-  }
-});
 
 app.post("/register", async (req, res) => {
   const { email, password } = req.body;
