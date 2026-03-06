@@ -14,7 +14,7 @@
 - each note may belong to one category
 - users can only access their own notes and categories
 
-### Database Tables (MVP)
+### #3 Database Tables (MVP)
 
 | users | categories | notes |
 |-------|------------|-------|
@@ -30,3 +30,36 @@
 - `categories.user_id` → `users.id`
 - `notes.user_id` → `users.id`
 - `notes.category_id` → `categories.id`
+
+### #4 API Endpoints
+
+**Authentication:**
+```
+POST /register
+POST /login
+POST /logout
+GET /me
+```
+
+**Notes CRUD:**
+```
+GET /notes
+GET /notes/:id
+POST /notes
+PUT /notes/:id
+DELETE /notes/:id
+```
+
+**Categories:**
+```
+GET /categories
+POST /categories
+```
+
+**Google OAuth:**
+```
+GET /auth/google
+GET /auth/google/callback
+```
+
+*"That's the contract between your frontend and backend."*
