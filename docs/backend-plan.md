@@ -14,14 +14,14 @@
 - each note may belong to one category
 - users can only access their own notes and categories
 
-### Database Structure (MVP)
+### Database Tables (MVP)
 
 | users | categories | notes |
 |-------|------------|-------|
 | id | id | id |
-| email | name | title |
+| email (unique) | name | title |
 | password_hash (nullable) | user_id | content |
-| google_id (nullable) |  | user_id |
+| google_id (nullable, unique) |  | user_id |
 | display_name (nullable) |  | category_id (nullable) |
 |  |  | created_at |
 |  |  | updated_at |
