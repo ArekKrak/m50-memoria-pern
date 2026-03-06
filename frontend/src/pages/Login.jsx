@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
-export default function Login() {
+export default function Login({ refreshUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -23,6 +23,7 @@ export default function Login() {
       });
 
       if (res.ok) {
+        refreshUser();
         navigate("/dashboard"); // Here's the moment the application crosses a threshold.
       } else {
         setError("Invalid email or password");
