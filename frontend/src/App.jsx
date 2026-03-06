@@ -33,8 +33,8 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/dashboard' element={<Dashboard user={user} />} />
-        <Route path='/notes/new' element={<CreateNote />} />
-        <Route path='/notes/:id/edit' element={<EditNote />} />
+        <Route path='/notes/new' element={<CreateNote user={user} />} />
+        <Route path='/notes/:id/edit' element={<EditNote user={user} />} />
         <Route path='*' element={<Navigate to="/" replace />} />
       </Routes>
     </>
