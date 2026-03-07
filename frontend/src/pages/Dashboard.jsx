@@ -39,9 +39,9 @@ export default function Dashboard({ user, refreshUser }) {
             {" "}
             <Link to={`/notes/${note.id}/edit`} className="edit">Edit</Link>
             {" "}
-            <button type="button" onClick={() => handleDelete(note.id)}>
+            <span className="delete" onClick={() => handleDelete(note.id)}>
               Delete
-            </button>
+            </span>
           </li>
         ))}
       </ul>
