@@ -1,6 +1,7 @@
 const express = require("express");
 const pool = require("../db");
 const requireAuth = require("../middleware/requireAuth");
+const { validateCategory } = require("../middleware/validate");
 
 const router = express.Router();
 
@@ -25,7 +26,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", validateCategory, async (req, res) => {
   const { name } = req.body;
   const userId = req.user ? req.user.id : req.session.userId;
 
