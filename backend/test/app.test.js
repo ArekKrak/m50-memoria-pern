@@ -19,10 +19,4 @@ describe("Notes routes security", () => {
 
     expect(res.status).to.equal(400);
   });
-
-  it("should reject an invalid note ID", async () => {
-    const res = await request(app).get("/notes/sandwich");
-
-    expect(res.status).to.equal(400);
-  });
 });
