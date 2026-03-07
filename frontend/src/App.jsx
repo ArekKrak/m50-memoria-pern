@@ -10,11 +10,13 @@ import CreateNote from './pages/CreateNote';
 import EditNote from './pages/EditNote';
 import memoriaLogo from '/banner.svg';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [user, setUser] = useState(null);
 
   const refreshUser = () => {
-    fetch("http://localhost:3000/me", {
+    fetch(`${API_URL}/me`, {
       credentials: "include" // Tells the browser to send the session cookie to the backend.
     })
       .then(res => {
