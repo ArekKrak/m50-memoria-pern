@@ -2,6 +2,63 @@ ul {
   list-style: none;
 }
 
+.category-form {
+  margin: 1rem 0;
+}
+
+.category-input {
+  background: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-input:focus {
+  border-color: #1a2fff;
+  box-shadow: 0 0 6px #1a2fff;
+}
+
+.category-button {
+  margin-left: 0.5rem;
+  background: #121212;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-button:hover {
+  border-color: #1a2fff;
+  box-shadow:
+    0 0 6px #1a2fff,
+    0 0 12px #1a2fff;
+}
+
+.category-filter {
+  margin: 0.8rem 0;
+}
+
+.category-select {
+  background: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-select:hover,
+.category-select:focus {
+  border-color: #1a2fff;
+  box-shadow: 0 0 6px #1a2fff;
+}
+
 .edit {
   text-decoration: none;
   color: #1a2fff;
