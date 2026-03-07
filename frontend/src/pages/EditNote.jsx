@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function EditNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState("");
   const { id } = useParams(); // Extracts the `:id` from the route `/notes/:id/edit` That's the identifier that tells the editor which note is being modified
   const navigate = useNavigate();
 
@@ -15,7 +17,14 @@ export default function EditNote() {
       .then((data) => {
         setTitle(data.title);
         setContent(data.content);
+        setCategoryId(data.category_id || "");
       });
+    
+    fetch("http://localhost:3000/categories", {
+      credentials: "include"
+    })
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
   }, [id]);
 
   const handleSubmit = async (e) => {
@@ -29,7 +38,8 @@ export default function EditNote() {
       credentials: "include",
       body: JSON.stringify({
         title,
-        content
+        content,
+        category_id: categoryId || null
       })
     });
 
@@ -55,6 +65,18 @@ export default function EditNote() {
           rows="6"
           required
         />
+
+        <select
+          value={categoryId}
+          onChange={(e) => setCategoryId(e.target.value)}
+        >
+          <option value="">No category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
 
         <button type="submit">Save changes</button>
       </form>
