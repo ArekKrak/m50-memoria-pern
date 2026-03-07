@@ -18,4 +18,27 @@ function validateCategory(req, res, next) {
   next();
 }
 
-module.exports = { validateIdParam, validateCategory };
+function validateNote(req, res, next) {
+  const { title, content, category_id } = req.body;
+
+  if (typeof title !== "string" || !title.trim()) {
+    return res.status(400).json({ error: "Invalid note title" });
+  }
+
+  if (typeof content !== "string" || !content.trim()) {
+    return res.status(400).json({ error: "Invalid note title" });
+  }
+
+  if (
+    category_id !== undefined &&
+    category_id !== null &&
+    category_id !== "" &&
+    (!Number.isInteger(Number(category_id)) || Number(category_id) < 1)
+  ) {
+    return res.status(400).json({ error: "Invalid category ID" });
+  }
+
+  next();
+}
+
+module.exports = { validateIdParam, validateCategory, validateNote };
