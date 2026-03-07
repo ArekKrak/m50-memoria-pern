@@ -30,7 +30,7 @@ export default function Navbar({ bannerSrc, user, refreshUser }) {
             <button type="button" onClick={handleLogout}>Sign out</button>
           </>
         ) : (
-          !isAuthPage (
+          !isAuthPage && (
             <>
               <Link to="/login">Sign in</Link>
               <Link to="/register">Sign up</Link>
