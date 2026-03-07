@@ -19,3 +19,22 @@ ul {
     0 0 45px #ffffff,
     0 0 65px #ffffff;
 }
+
+.delete {
+  text-decoration: none;
+  color: #fa0606;
+  text-shadow: 0 0 6px #fa0606;
+  transition: color 1.5s ease, text-shadow 1.5s ease;
+  margin-left: 10px;
+}
+
+.delete:hover {
+  color: #ffffff;
+  cursor: pointer;
+  text-shadow: 
+    0 0 10px #ffffff,
+    0 0 15px #ffffff,
+    0 0 25px #ffffff,
+    0 0 45px #ffffff,
+    0 0 65px #ffffff;
+}

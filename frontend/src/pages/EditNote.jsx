@@ -38,7 +38,7 @@ export default function EditNote() {
 
   return (
     <div>
-      <h1>Edit Note #{id}</h1>
+      <h1>Edit Note</h1>
 
       <form onSubmit={handleSubmit}>
         <input
