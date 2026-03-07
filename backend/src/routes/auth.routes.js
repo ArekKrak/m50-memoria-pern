@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
 const pool = require("../db");
 const { validateRegister, validateLogin } = require("../middleware/validate");
 
@@ -7,13 +8,15 @@ const router = express.Router();
 router.post("/register", validateRegister, async (req, res) => {
   const email = req.body.email.trim();
   const { password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10); /* Why 10? 10 is the salt rounds value. The higher number, the slower hashing, and therefore a hard time
+  for attackers to brute-force */
 
   try {
     const result = await pool.query(
       `INSERT INTO users (email, password_hash)
        VALUES ($1, $2)
        RETURNING id, email`,
-      [email, password]
+      [email, hashedPassword]
     );
     
     res.status(201).json(result.rows[0]);
@@ -39,8 +42,9 @@ router.post("/login", validateLogin, async (req, res) => {
     }
 
     const user = result.rows[0];
+    const passwordMatch = await bcrypt.compare(password, user.password_hash);
 
-    if (user.password_hash !== password) {
+    if (!passwordMatch) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
