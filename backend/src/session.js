@@ -1,7 +1,7 @@
 const session = require("express-session");
 
 module.exports = session({
-  secret: "memoria-secret",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {

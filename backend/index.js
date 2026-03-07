@@ -1,18 +1,18 @@
+require("dotenv").config();
 const pool = require("./src/db");
 const express = require("express");
 const cors = require("cors");
 const sessionMiddleware = require("./src/session");
-require("dotenv").config();
 const passport = require("./src/auth/google");
 const notesRoutes = require("./src/routes/notes.routes");
 const categoriesRoutes = require("./src/routes/categories.routes");
 const authRoutes = require("./src/routes/auth.routes");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: process.env.CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());
@@ -38,10 +38,10 @@ app.get("/auth/google",
 
 app.get("/auth/google/callback", 
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:5173/login"
+    failureRedirect: `${process.env.CLIENT_URL}/login`
   }),
   (req, res) => {
-    res.redirect("http://localhost:5173/dashboard");
+    res.redirect(`${process.env.CLIENT_URL}/dashboard`);
   }
 );
 
