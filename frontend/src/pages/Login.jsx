@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Login({ refreshUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ export default function Login({ refreshUser }) {
     e.preventDefault();
     
     try {
-      const res = await fetch("http://localhost:3000/login", {
+      const res = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -63,7 +65,7 @@ export default function Login({ refreshUser }) {
       <button 
         className='google'
         type="button"
-        onClick={() => window.location.href = "http://localhost:3000/auth/google"}
+        onClick={() => window.location.href = `${API_URL}/auth/google`}
       >
         Sign in with Google
       </button>

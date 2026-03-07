@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Dashboard({ user, refreshUser }) {
   const [notes, setNotes] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -9,7 +11,7 @@ export default function Dashboard({ user, refreshUser }) {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const fetchNotes = () => {
-    fetch("http://localhost:3000/notes", {
+    fetch(`${API_URL}/notes`, {
       credentials: "include"
     })
       .then(res => res.json())
@@ -17,7 +19,7 @@ export default function Dashboard({ user, refreshUser }) {
   };
 
   const fetchCategories = () => {
-    fetch("http://localhost:3000/categories", {
+    fetch(`${API_URL}/categories`, {
       credentials: "include"
     })
       .then(res => res.json())
@@ -31,7 +33,7 @@ export default function Dashboard({ user, refreshUser }) {
   }, []);
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:3000/notes/${id}`, {
+    await fetch(`${API_URL}/notes/${id}`, {
       method: "DELETE",
       credentials: "include"
     });
@@ -42,7 +44,7 @@ export default function Dashboard({ user, refreshUser }) {
   const handleCreateCategory = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:3000/categories", {
+    await fetch(`${API_URL}/categories`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

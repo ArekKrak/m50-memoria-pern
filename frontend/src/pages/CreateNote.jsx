@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function CreateNote({ user }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -9,7 +11,7 @@ export default function CreateNote({ user }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/categories", {
+    fetch(`${API_URL}/categories`, {
       credentials: "include"
     })
       .then((res) => res.json())
@@ -20,7 +22,7 @@ export default function CreateNote({ user }) {
     e.preventDefault();
     if (!user) return;
 
-    await fetch("http://localhost:3000/notes", {
+    await fetch(`${API_URL}/notes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

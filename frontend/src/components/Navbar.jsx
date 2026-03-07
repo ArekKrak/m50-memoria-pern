@@ -1,13 +1,15 @@
 import './Navbar.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom'; // Adding clickability so the elements supposed to redirect actually do it
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Navbar({ bannerSrc, user, refreshUser }) {
   const navigate = useNavigate();
   const location = useLocation();
   const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
 
   const handleLogout = async () => {
-    await fetch("http://localhost:3000/logout", {
+    await fetch(`${API_URL}/logout`, {
       method: "POST",
       credentials: "include"
     });

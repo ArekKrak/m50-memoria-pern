@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function EditNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -10,7 +12,7 @@ export default function EditNote() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/notes/${id}`, {
+    fetch(`${API_URL}/notes/${id}`, {
       credentials: "include"
     })
       .then((res) => res.json())
@@ -20,7 +22,7 @@ export default function EditNote() {
         setCategoryId(data.category_id || "");
       });
     
-    fetch("http://localhost:3000/categories", {
+    fetch(`${API_URL}/categories`, {
       credentials: "include"
     })
       .then((res) => res.json())
@@ -30,7 +32,7 @@ export default function EditNote() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch(`http://localhost:3000/notes/${id}`, {
+    await fetch(`${API_URL}/notes/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
