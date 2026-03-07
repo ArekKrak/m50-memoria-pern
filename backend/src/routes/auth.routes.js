@@ -8,10 +8,10 @@ const router = express.Router();
 router.post("/register", validateRegister, async (req, res) => {
   const email = req.body.email.trim();
   const { password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10); /* Why 10? 10 is the salt rounds value. The higher number, the slower hashing, and therefore a hard time
-  for attackers to brute-force */
 
   try {
+    const hashedPassword = await bcrypt.hash(password, 10); /* Why 10? 10 is the salt rounds value. The higher number, the slower hashing, and therefore a hard time
+  for attackers to brute-force */
     const result = await pool.query(
       `INSERT INTO users (email, password_hash)
        VALUES ($1, $2)
