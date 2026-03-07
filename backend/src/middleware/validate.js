@@ -26,7 +26,7 @@ function validateNote(req, res, next) {
   }
 
   if (typeof content !== "string" || !content.trim()) {
-    return res.status(400).json({ error: "Invalid note title" });
+    return res.status(400).json({ error: "Invalid note content" });
   }
 
   if (
