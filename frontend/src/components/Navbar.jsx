@@ -22,7 +22,6 @@ export default function Navbar({ bannerSrc, user, refreshUser }) {
       </h2>
 
       <nav>
-        <Link to="/">Home</Link>
         {user ? (
           <>
             <Link to="/dashboard">Dashboard</Link>
