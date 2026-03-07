@@ -15,6 +15,15 @@ export default function Dashboard({ user, refreshUser }) {
       .then(data => setNotes(data));
   }, []);
 
+  const handleDelete = async (id) => {
+    await fetch(`http://localhost:3000/notes/${id}`, {
+      method: "DELETE",
+      credentials: "include"
+    });
+
+    setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+  };
+
   return (
     <div>
       <h1>Your notes</h1>
@@ -29,6 +38,10 @@ export default function Dashboard({ user, refreshUser }) {
             <strong>{note.title}</strong>
             {" "}
             <Link to={`/notes/${note.id}/edit`} className="edit">Edit</Link>
+            {" "}
+            <button type="button" onClick={() => handleDelete(note.id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>
