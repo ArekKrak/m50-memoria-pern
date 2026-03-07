@@ -18,8 +18,7 @@ export default function CreateNote({ user }) {
       credentials: "include",
       body: JSON.stringify({
         title,
-        content,
-        user_id: user.id
+        content
       })
     });
     navigate("/dashboard");
