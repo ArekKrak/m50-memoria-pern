@@ -8,6 +8,7 @@ router.get("/", async (req, res) => {
     const result = await pool.query(
       `SELECT id, name, user_id
        FROM categories
+       WHERE user_id = $1
        ORDER BY name`
     );
     
