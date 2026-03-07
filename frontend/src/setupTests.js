@@ -1,1 +1,1 @@
-import "@testing-library/jest-dom"; // Provides handy assertions like `toBeInTheDocument()`
+import "@testing-library/jest-dom/vitest"; // Provides handy assertions like `toBeInTheDocument()`
