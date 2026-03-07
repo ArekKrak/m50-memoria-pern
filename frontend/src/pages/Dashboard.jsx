@@ -62,23 +62,25 @@ export default function Dashboard({ user, refreshUser }) {
     <div>
       <h1>Your notes</h1>
 
-      <form onSubmit={handleCreateCategory}>
+      <form onSubmit={handleCreateCategory} className="category-form">
         <input
           type="text"
           placeholder="New category"
           value={categoryName}
           onChange={(e) => setCategoryName(e.target.value)}
+          className="category-input"
           required
         />
-        <button type="submit">Add category</button>
+        <button type="submit" className="category-button">Add category</button>
       </form>
 
-      <div>
+      <div className="category-filter">
         <label htmlFor="categoryFilter">Filter by category: </label>
         <select
           id="categoryFilter"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
+          className="category-select"
         >
           <option value="">All notes</option>
           {categories.map((category) => (
