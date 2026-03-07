@@ -1,10 +1,12 @@
 const express = require("express");
 const pool = require("../db");
+const { validateRegister, validateLogin } = require("../middleware/validate");
 
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
-  const { email, password } = req.body;
+router.post("/register", validateRegister, async (req, res) => {
+  const email = req.body.email.trim();
+  const { password } = req.body;
 
   try {
     const result = await pool.query(
@@ -21,8 +23,9 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+router.post("/login", validateLogin, async (req, res) => {
+  const email = req.body.email.trim();
+  const { password } = req.body;
 
   try {
     const result = await pool.query(

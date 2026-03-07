@@ -57,6 +57,24 @@ function validateRegister(req, res, next) {
   }
 
   next();
-} 
+}
 
-module.exports = { validateIdParam, validateCategory, validateNote, validateRegister };
+function validateLogin(req, res, next) {
+  const { email, password } = req.body;
+
+  if (typeof email !== "string" || !email.trim()) {
+    return res.status(400).json({ error: "Invalid email" });
+  }
+
+  if (!/^\S+@\S+\.\S+$/.test(email.trim())) {
+    return res.status(400).json({ error: "Invalid email" });
+  }
+
+  if (typeof password !== "string" || !password.trim()) {
+    return res.status(400).json({ error: "Invalid password" });
+  }
+
+  next();
+}
+
+module.exports = { validateIdParam, validateCategory, validateNote, validateRegister, validateLogin };
