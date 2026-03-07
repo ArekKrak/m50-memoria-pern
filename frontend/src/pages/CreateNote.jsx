@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateNote({ user }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:3000/categories", {
+      credentials: "include"
+    })
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +28,8 @@ export default function CreateNote({ user }) {
       credentials: "include",
       body: JSON.stringify({
         title,
-        content
+        content,
+        category_id: categoryId || null
       })
     });
     navigate("/dashboard");
@@ -43,6 +54,18 @@ export default function CreateNote({ user }) {
           rows="6"
           required
         />
+
+        <select
+          value={categoryId}
+          onChange={(e) => setCategoryId(e.target.value)}
+        >
+          <option value="">No category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
 
         <button type="submit">Save note</button>
       </form>
