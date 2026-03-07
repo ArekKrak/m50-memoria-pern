@@ -41,4 +41,22 @@ function validateNote(req, res, next) {
   next();
 }
 
-module.exports = { validateIdParam, validateCategory, validateNote };
+function validateRegister(req, res, next) {
+  const { email, password } = req.body;
+
+  if (typeof email !== "string" || !email.trim()) {
+    return res.status(400).json({ error: "Invalid email" });
+  }
+
+  if (!/^\S+@\S+\.\S+$/.test(email.trim())) {
+    return res.status(400).json({ error: "Invalid email" });
+  }
+
+  if (typeof password !== "string" || password.length < 6) {
+    return res.status(400).json({ error: "Password must be at least 6 characters long" });
+  }
+
+  next();
+} 
+
+module.exports = { validateIdParam, validateCategory, validateNote, validateRegister };
