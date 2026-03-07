@@ -1,15 +1,21 @@
 const express = require("express");
 const pool = require("../db");
+const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
 
+router.use(requireAuth);
+
 router.get("/", async (req, res) => {
+  const userId = req.user ? req.user.id : req.session.userId;
+
   try {
     const result = await pool.query(
       `SELECT id, name, user_id
        FROM categories
        WHERE user_id = $1
-       ORDER BY name`
+       ORDER BY name`,
+      [userId]
     );
     
     res.json(result.rows);
@@ -20,14 +26,15 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { name, user_id } = req.body;
+  const { name } = req.body;
+  const userId = req.user ? req.user.id : req.session.userId;
 
   try {
     const result = await pool.query(
       `INSERT INTO categories (name, user_id)
        VALUES ($1, $2)
        RETURNING *`,
-      [name, user_id]
+      [name, userId]
     );
     
     res.status(201).json(result.rows[0]);
