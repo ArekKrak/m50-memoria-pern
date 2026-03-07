@@ -1,6 +1,7 @@
 const express = require("express");
 const pool = require("../db");
 const requireAuth = require("../middleware/requireAuth");
+const { validateIdParam } = require("../middleware/validate");
 
 const router = express.Router();
 
@@ -24,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", validateIdParam, async (req, res) => {
   const { id } = req.params;
   const userId = req.user ? req.user.id : req.session.userId;
 
@@ -64,7 +65,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", validateIdParam, async (req, res) => {
   const { id } = req.params;
   const { title, content, category_id } = req.body;
   const userId = req.user ? req.user.id : req.session.userId;
@@ -91,7 +92,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", validateIdParam, async (req, res) => {
   const { id } = req.params;
   const userId = req.user ? req.user.id : req.session.userId;
 
