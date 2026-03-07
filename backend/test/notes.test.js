@@ -8,4 +8,15 @@ describe("Notes routes security", () => {
 
     expect(res.status).to.equal(401);
   });
+
+  it("should reject registration with a short password", async () => {
+    const res = await request(app)
+      .post("/register")
+      .send({
+        email: "shortpass@test.com",
+        password: "pass"
+      });
+
+    expect(res.status).to.equal(400);
+  });
 });
