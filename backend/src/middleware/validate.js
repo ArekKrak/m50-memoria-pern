@@ -9,7 +9,7 @@ function validateIdParam(req, res, next) {
 }
 
 function validateCategory(req, res, next) {
-  const name = req.body.name.trim();
+  const { name } = req.body;
 
   if (typeof name !== "string" || !name.trim()) {
     return res.status(400).json({ error: "Invalid category name" })

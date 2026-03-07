@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", validateCategory, async (req, res) => {
-  const { name } = req.body;
+  const name = req.body.name.trim();
   const userId = req.user ? req.user.id : req.session.userId;
 
   try {
