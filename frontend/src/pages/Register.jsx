@@ -26,7 +26,8 @@ export default function Register() {
       if (res.ok) {
         navigate("/login");
       } else {
-        setError("Registration failed.");
+        const data = await res.json();
+        setError(data.error || "Registration failed.");
         setPassword("");
       }
     } catch (err) {
