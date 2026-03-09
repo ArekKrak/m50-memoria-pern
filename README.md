@@ -154,14 +154,14 @@ m50-memoria-pern/
 ├── backend/
 │   ├── src/
 │   │   ├── auth/
-│   │   │		└── google.js
+│   │   │   └── google.js
 │   │   ├── middleware/
-│   │   │		├── requireAuth.js
-│   │   │		└── validate.js
+│   │   │   ├── requireAuth.js
+│   │   │   └── validate.js
 │   │   ├── routes/
-│   │   │		├── auth.routes.js
-│   │   │		├── categories.routes.js
-│   │   │		└── notes.routes.js
+│   │   │   ├── auth.routes.js
+│   │   │   ├── categories.routes.js
+│   │   │   └── notes.routes.js
 │   │   ├── db.js
 │   │   └── session.js  
 │   ├── test/
@@ -178,8 +178,8 @@ m50-memoria-pern/
 │   │   └── memoria_logo.svg
 │   ├── src/
 │   │   ├── components/
-│   │   │		├── Navbar.css
-│   │   │		└── Navbar.jsx
+│   │   │   ├── Navbar.css
+│   │   │   └── Navbar.jsx
 │   │   ├── pages/
 │   │   │   ├── CreateNote.jsx
 │   │   │   ├── Dashboard.css
