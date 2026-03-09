@@ -22,6 +22,11 @@ router.post("/register", validateRegister, async (req, res) => {
     res.status(201).json(result.rows[0]);
   } catch (err) {
     console.error(err);
+
+    if (err.code === "23505") {
+      return res.status(409).json({ error: "Email already registered" });
+    }
+
     res.status(500).json({ error: "Registration failed" });
   }
 });
