@@ -1,5 +1,7 @@
 # Memoria — Personal Knowledge Base (PERN Stack)
 
+*Memoria is a full-stack personal knowledge base application built with the PERN stack, enabling authenticated users to organise private notes into categories.*
+
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-REST%20API-000000?logo=express&logoColor=white)
 ![React](https://img.shields.io/badge/React-Client-61DAFB?logo=react&logoColor=black)
@@ -14,6 +16,8 @@
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/ArekKrak/m50-memoria-pern)
 [![Live App](https://img.shields.io/badge/Live-App-black)](https://memoria-app-tau.vercel.app)
 [![Live API](https://img.shields.io/badge/Live-API-black)](https://memoria-api-0rtz.onrender.com)
+
+![Memoria Dashboard](frontend/public/banner.svg)
 
 This application was built as the **final open-ended PERN project** in the Codecademy *Full-Stack Web Development* path.
 
@@ -58,9 +62,9 @@ Deployment architecture:
 
 ---
 
-# Backend
+## Backend
 
-## Core Features
+### Core Features
 
 - User registration
 - Secure password hashing with bcrypt
@@ -74,7 +78,7 @@ Deployment architecture:
 
 ---
 
-## Database Schema
+### Database Schema
 
 Relational tables include:
 
@@ -90,13 +94,13 @@ users
   └── notes
 ```
 
-Each category and note is tied to a specific user through foreign key constraints.
+Each category and note is tied to its owner through foreign-key constraints.
 
 This ensures complete data isolation between users.
 
 ---
 
-## API Highlights
+### API Highlights
 
 Authentication:
 
@@ -123,9 +127,9 @@ All category and note routes are protected by authentication middleware.
 
 ---
 
-# Frontend
+## Frontend
 
-## Features
+### Features
 
 - Account registration
 - Login with email/password
@@ -177,8 +181,8 @@ m50-memoria-pern/
 │   │   │		├── Navbar.css
 │   │   │		└── Navbar.jsx
 │   │   ├── pages/
-│   │   │   ├── CreateNotejsx
-│   │   │   ├── Dashboard.csx
+│   │   │   ├── CreateNote.jsx
+│   │   │   ├── Dashboard.css
 │   │   │   ├── Dashboard.jsx
 │   │   │   ├── Dashboard.test.jsx
 │   │   │   ├── EditNote.jsx
@@ -192,7 +196,7 @@ m50-memoria-pern/
 │   │   │   └── Register.jsx
 │   │   ├── App.css
 │   │   ├── App.jsx
-│   │   ├── index.jsx
+│   │   ├── index.css
 │   │   ├── main.jsx
 │   │   └── setupTests.jsx
 │   ├── .gitignore
