@@ -20,3 +20,14 @@ describe("Notes routes security", () => {
     expect(res.status).to.equal(400);
   });
 });
+
+it("should reject login with invalid credentials", async () => {
+  const res = await request(app)
+    .post("/login")
+    .send({
+      email: "some.user@test.com",
+      password: "wrongpass"
+    });
+  
+  expect(res.status).to.equal(401);
+});
