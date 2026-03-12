@@ -163,7 +163,7 @@ m50-memoria-pern/
 │   │   │   ├── categories.routes.js
 │   │   │   └── notes.routes.js
 │   │   ├── db.js
-│   │   └── session.js  
+│   │   └── session.js
 │   ├── test/
 │   │   └── app.test.js
 │   ├── app.js
